@@ -210,3 +210,14 @@ void LinkedList::addAtIndex(int index, int value)
     }
 }
 
+void LinkedList::insertionSort() 
+{
+    Node* tempSwap = this->head;
+    Node* theFollower = this->head;
+    int theFollowerCount;
+    for(int currStart = 0; currStart < this->count; currStart++)
+    {
+        theFollowerCount = currStart;
+    }
+}
+
