@@ -218,6 +218,11 @@ void LinkedList::insertionSort()
     for(int currStart = 0; currStart < this->count; currStart++)
     {
         theFollowerCount = currStart;
+        while(theFollowerCount > 0 && theFollower->getNextNode()->getPayload() < theFollower->getPayload())
+        {
+            tempSwap = theFollower; 
+            
+        }
     }
 }
 
