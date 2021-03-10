@@ -210,19 +210,64 @@ void LinkedList::addAtIndex(int index, int value)
     }
 }
 
+Node* LinkedList::getNodeAtIndex(int index)
+{
+    Node* currentNode = this->head;
+    for(int i = 0; i < index; i++)
+    {
+        currentNode = currentNode->getNextNode();
+    }
+    return currentNode;
+}
+
 void LinkedList::insertionSort() 
 {
-    Node* tempSwap = this->head;
-    Node* theFollower = this->head;
-    int theFollowerCount;
-    for(int currStart = 0; currStart < this->count; currStart++)
+    if(this->count > 1)
     {
-        theFollowerCount = currStart;
-        while(theFollowerCount > 0 && theFollower->getNextNode()->getPayload() < theFollower->getPayload())
+        int currentFollowerPosition; 
+        Node* theFollower;
+        Node* tempSwap;
+
+        for(int currPos = 1; currPos < this->count; currPos++)
         {
-            tempSwap = theFollower; 
-            
+            currentFollowerPosition = currPos;
+            theFollower = this->getNodeAtIndex(currentFollowerPosition);
+
+            while(currPos > 0)
+            {
+                tempSwap = this->getNodeAtIndex(currentFollowerPosition-1);
+
+                if(theFollower->getPayload() < tempSwap->getPayload())
+                {
+                    tempSwap->setNextNode(theFollower->getNextNode());
+                    theFollower->setNextNode(tempSwap);
+
+                    if(currentFollowerPosition == 1)
+                    {
+                        this->head = theFollower;
+                    }
+                    else if(currentFollowerPosition == count)
+                    {
+                        this->tail = tempSwap;
+                        //tempSwap->setNextNode(NULL);
+                    }
+                    else
+                    {
+                        tempSwap = this->getNodeAtIndex(currentFollowerPosition -2);
+                        tempSwap->setNextNode(theFollower);
+                    }
+
+                    currentFollowerPosition--;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+
         }
     }
+
 }
 

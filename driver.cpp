@@ -13,7 +13,7 @@ void displayIntArray(int ar[]);
 int main(int argc, char** argv)
 {
     //this gives you actual random numbers --> you have to see the random number generator
-    srandom(time(NULL));
+    /**srandom(time(NULL));
 
     long val;
     int ar[10];
@@ -28,6 +28,7 @@ int main(int argc, char** argv)
     insertionSort(ar, ARRAY_LENGTH);
     cout << endl;
     displayIntArray(ar);
+    **/
    
 
     LinkedList* ll = new LinkedList();
@@ -36,10 +37,12 @@ int main(int argc, char** argv)
     ll->addEnd(6);
     ll->addEnd(8);
     ll->addEnd(2);
-    ll->addFront(3);
-    ll->removeFront();
-    ll->removeAtIndex(2);
-    ll->addAtIndex(1,7);
+    ll->addEnd(3);
+    ll->addEnd(12);
+    ll->addFront(13);
+    ll->display();
+
+    ll->insertionSort();
     ll->display();
 
     return 0;
